@@ -5,3 +5,12 @@ media
 
 venv
 /static/
+
+# Keep Secret Key Secret!
+/website/secret_key.txt
+secret_key.txt
+IL-old-reference.png
+IL-revised-design-v1-flattened.png
+IL-revised-design-v1.pdn
+navigation-for-isaac.txt
+bageldog.txt

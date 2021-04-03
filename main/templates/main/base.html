@@ -28,7 +28,7 @@
 
 		<link rel="shortcut icon" type="image/png" href="{% static 'main/images/square-black-small.png' %}"/>
 
-		
+
 		<!-- custom css -->
 		<link rel="stylesheet" type="text/css" href="{% static 'main/css/custom.css' %}">
 		<!-- <title>UVM Stats and DS Club</title> -->
@@ -39,75 +39,70 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
-		
-	
-		
 
 
-
-
-
-			
 		{% block head %}{% endblock %}
 	</head>
-	<body>
+	<body style="background-color: #333333;">
 
-		
-		
-		<header class="navbar fixed-top navbar-light" id="header">
+		<header class="navbar fixed-top navbar-light" id="header" style="background-color: #8FAF80;">
 
-			<!-- navbar brand -->
-			<a class="navbar-brand d-flex flex-row align-items-center" id="header" href="{{ index }}">
-				<img class="d-flex pr-2" src="{% static 'main/images/square-medium.png' %}" width="50">
-				<div class="d-flex">UVM Stats and DS Club</div>
-			</a>
+<!-- TODO: FIX NAVBAR SO MOBILE -> COLLAPSE, but NORMAL = LIST -->
+<!-- NOTE: classes here refer to bootstrap classes -->
 
+			<!-- links list -->
+			<!-- id="navbarCollapse" -->
+			<nav class="navbar navbar-expand-lg" style="background-color: #8FAF80;">
 
-			<!-- collapse button -->
-			<button class="navbar-toggler" type="button" data-toggle="collapse"
-					data-target="#navbarCollapse" aria-controls="navbarCollapse"
-						   aria-expanded="false" aria-label="Toggle navigation">
-				<!-- <small class="pr-2">Menu</small> -->
-				<span class="navbar-toggler-icon"></span>
-			</button>
+				<ul class="navbar-nav navbar-collapse">
 
-
-
-			<!-- links list -->			
-			<nav class="collapse navbar-collapse" id="navbarCollapse">
-				<ul class="navbar-nav">
-
-					<li class="nav-item">
-						<a class="{% active request index %} nav-link" href="{{ index }}">Home</a>
-					</li>
-
-					<li class="nav-item">
-						<a class="{% active request blog %} nav-link" href="{{ blog }}">Blog</a>
-					</li>
-
-					<li class="nav-item">
-						<a class="{% active request people %} nav-link" href="{{ people }}">People</a>
+					<li class="nav-item" >
+						<a class="navbar-brand d-flex flex-row align-items-center" id="header" href="{{ index }}">
+							<img class="d-flex pr-2" src="{% static 'main/images/square-medium.png' %}" width="50">
+							<div class="d-flex">UVM Stats and DS Club</div>
+						</a>
 					</li>
 					
 					<li class="nav-item">
-						<a class="{% active request asa %} nav-link" href="{{ asa }}">ASA Student Chapter</a>
+						<a class="{% active request blog %} nav-link" id="match-nav-bg" href="{{ blog }}">Blog</a>
 					</li>
 
 					<li class="nav-item">
-						<a class="{% active request links %} nav-link" href="{{ links }}">Useful Links</a>
+						<a class="{% active request people %} nav-link" id="match-nav-bg" href="{{ people }}">People</a>
 					</li>
-					
+
 					<li class="nav-item">
-						<a class="{% active request software %} nav-link" href="{{ software }}">Software</a>
+						<a class="{% active request asa %} nav-link" id="match-nav-bg" href="{{ asa }}">ASA Info</a>
 					</li>
 
-					
 
-					
+					<li class="nav-item">
+						<!-- TODO: Add html page for career stuff -->
+						<a class="{% active request links %} nav-link" id="match-nav-bg" href="#">Career Resources</a>
+					</li>
+
+
+					<li class="nav-item">
+						<a class="{% active request links %} nav-link" id="match-nav-bg" href="{{ links }}">Fun Links</a>
+					</li>
+
+					<li class="nav-item">
+						<a class="{% active request software %} nav-link" id="match-nav-bg" href="{{ software }}">Statistical Software</a>
+					</li>
+
+					<li class="nav-item">
+							<!-- TODO: Add html page for contact info -->
+						<a class="{% active request software %} nav-link" id="match-nav-bg" href="#">Contact</a>
+					</li>
+
+
+
+
+
 
 				</ul>
 			</nav>
-			
+
 		</header>
 
 		<main class="container" id="main-content">
@@ -121,7 +116,7 @@
 		</footer>
 		<!-- Optional JavaScript -->
 		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-		
+
 
 
 		<script>
@@ -132,7 +127,7 @@
 
 		 });
 		</script>
-		
+
 		{% block script %}
 		{% endblock %}
 	</body>

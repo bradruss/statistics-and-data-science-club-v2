@@ -1,8 +1,7 @@
+/* Header */
 h1 {
-	font-size: 2rem;
+		font-size: 2rem;
 }
-
-
 
 h2 {
 	font-size: 1.5rem;
@@ -25,6 +24,26 @@ h4, h5 {
 	font-size: 1rem;
 }
 
+.active {
+  background-color: #4CAF50;
+}
+
+/* Nav bar */
+/* For some reason I could only get the BG color to change manually */
+#match-nav-bg {
+	background-color: #8FAF80;
+}
+
+/* Nav bar button */
+button {
+  width: 70px;
+  height: 30px;
+}
+
+/* body/main */
+body {
+	color: #ffffff;
+}
 
 #main-content {
 	padding-top: 100px;
