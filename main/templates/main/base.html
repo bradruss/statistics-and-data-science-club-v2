@@ -107,18 +107,16 @@
 					<span class="navbar-toggler-icon"></span>
 				</button>
 
-				<nav id="navbarCollapse" class="collapse navbar navbar-expand-lg" style="background-color: #8FAF80;">
+				<nav id="navbarCollapse" class="d-flex flex-column justify-content-center collapse navbar navbar-expand-lg" style="background-color: #8FAF80;">
 
 					<ul class="navbar-nav navbar-collapse">
 
-						<li class="nav-item" >
+						<li class="nav-item">
 							<a class="navbar-brand d-flex flex-row align-items-center" id="header" href="{{ index }}">
 								<img class="d-flex pr-2" src="{% static 'main/images/square-medium.png' %}" width="50">
 								<div class="d-flex">UVM Stats and DS Club</div>
 							</a>
 						</li>
-
-
 
 						<li class="nav-item">
 							<a class="{% active request blog %} nav-link" id="match-nav-bg" href="{{ blog }}">Blog</a>
