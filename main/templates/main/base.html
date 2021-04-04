@@ -47,61 +47,114 @@
 
 		<header class="navbar fixed-top navbar-light" id="header" style="background-color: #8FAF80;">
 
-<!-- TODO: FIX NAVBAR SO MOBILE -> COLLAPSE, but NORMAL = LIST -->
-<!-- NOTE: classes here refer to bootstrap classes -->
+			<!-- NOTE FOR FUTURE DEVS: classes here refer to bootstrap classes -->
 
-			<!-- links list -->
-			<!-- id="navbarCollapse" -->
-			<nav class="navbar navbar-expand-lg" style="background-color: #8FAF80;">
+			<!-- This is the tab-style desktop navbar - hidden on screens smaller than large -->
+			<div class="d-none d-lg-block">
+				<nav class="navbar navbar-expand-lg" style="background-color: #8FAF80;">
 
-				<ul class="navbar-nav navbar-collapse">
+					<ul class="navbar-nav navbar-collapse">
 
-					<li class="nav-item" >
-						<a class="navbar-brand d-flex flex-row align-items-center" id="header" href="{{ index }}">
-							<img class="d-flex pr-2" src="{% static 'main/images/square-medium.png' %}" width="50">
-							<div class="d-flex">UVM Stats and DS Club</div>
-						</a>
-					</li>
-					
-					<li class="nav-item">
-						<a class="{% active request blog %} nav-link" id="match-nav-bg" href="{{ blog }}">Blog</a>
-					</li>
+						<li class="nav-item" >
+							<a class="navbar-brand d-flex flex-row align-items-center" id="header" href="{{ index }}">
+								<img class="d-flex pr-2" src="{% static 'main/images/square-medium.png' %}" width="50">
+								<div class="d-flex">UVM Stats and DS Club</div>
+							</a>
+						</li>
 
-					<li class="nav-item">
-						<a class="{% active request people %} nav-link" id="match-nav-bg" href="{{ people }}">People</a>
-					</li>
+						<li class="nav-item">
+							<a class="{% active request blog %} nav-link" id="match-nav-bg" href="{{ blog }}">Blog</a>
+						</li>
 
-					<li class="nav-item">
-						<a class="{% active request asa %} nav-link" id="match-nav-bg" href="{{ asa }}">ASA Info</a>
-					</li>
+						<li class="nav-item">
+							<a class="{% active request people %} nav-link" id="match-nav-bg" href="{{ people }}">People</a>
+						</li>
 
-
-					<li class="nav-item">
-						<!-- TODO: Add html page for career stuff -->
-						<a class="{% active request links %} nav-link" id="match-nav-bg" href="#">Career Resources</a>
-					</li>
+						<li class="nav-item">
+							<a class="{% active request asa %} nav-link" id="match-nav-bg" href="{{ asa }}">ASA Info</a>
+						</li>
 
 
-					<li class="nav-item">
-						<a class="{% active request links %} nav-link" id="match-nav-bg" href="{{ links }}">Fun Links</a>
-					</li>
+						<li class="nav-item">
+							<!-- TODO: Add html page for career stuff -->
+							<a class="{% active request links %} nav-link" id="match-nav-bg" href="#">Career Resources</a>
+						</li>
 
-					<li class="nav-item">
-						<a class="{% active request software %} nav-link" id="match-nav-bg" href="{{ software }}">Statistical Software</a>
-					</li>
 
-					<li class="nav-item">
+						<li class="nav-item">
+							<a class="{% active request links %} nav-link" id="match-nav-bg" href="{{ links }}">Fun Links</a>
+						</li>
+
+						<li class="nav-item">
+							<a class="{% active request software %} nav-link" id="match-nav-bg" href="{{ software }}">Statistical Software</a>
+						</li>
+
+						<li class="nav-item">
 							<!-- TODO: Add html page for contact info -->
-						<a class="{% active request software %} nav-link" id="match-nav-bg" href="#">Contact</a>
-					</li>
+							<a class="{% active request software %} nav-link" id="match-nav-bg" href="#">Contact</a>
+						</li>
+
+					</ul>
+				</nav>
+			</div>
+
+
+			<!-- This is the collpasable button-triggered mobile navbar - hidden on screens that are large or wider -->
+			<div class="d-lg-none d-xl-none">
+				<button class="navbar-toggler" type="button" data-toggle="collapse"
+						data-target="#navbarCollapse" aria-controls="navbarCollapse"
+						aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
+				<nav id="navbarCollapse" class="collapse navbar navbar-expand-lg" style="background-color: #8FAF80;">
+
+					<ul class="navbar-nav navbar-collapse">
+
+						<li class="nav-item" >
+							<a class="navbar-brand d-flex flex-row align-items-center" id="header" href="{{ index }}">
+								<img class="d-flex pr-2" src="{% static 'main/images/square-medium.png' %}" width="50">
+								<div class="d-flex">UVM Stats and DS Club</div>
+							</a>
+						</li>
 
 
 
+						<li class="nav-item">
+							<a class="{% active request blog %} nav-link" id="match-nav-bg" href="{{ blog }}">Blog</a>
+						</li>
+
+						<li class="nav-item">
+							<a class="{% active request people %} nav-link" id="match-nav-bg" href="{{ people }}">People</a>
+						</li>
+
+						<li class="nav-item">
+							<a class="{% active request asa %} nav-link" id="match-nav-bg" href="{{ asa }}">ASA Info</a>
+						</li>
 
 
+						<li class="nav-item">
+							<!-- TODO: Add html page for career stuff -->
+							<a class="{% active request links %} nav-link" id="match-nav-bg" href="#">Career Resources</a>
+						</li>
 
-				</ul>
-			</nav>
+
+						<li class="nav-item">
+							<a class="{% active request links %} nav-link" id="match-nav-bg" href="{{ links }}">Fun Links</a>
+						</li>
+
+						<li class="nav-item">
+							<a class="{% active request software %} nav-link" id="match-nav-bg" href="{{ software }}">Statistical Software</a>
+						</li>
+
+						<li class="nav-item">
+							<!-- TODO: Add html page for contact info -->
+							<a class="{% active request software %} nav-link" id="match-nav-bg" href="#">Contact</a>
+						</li>
+
+					</ul>
+				</nav>
+			</div>
 
 		</header>
 
@@ -109,7 +162,6 @@
 			{% block content %}
 			{% endblock %}
 		</main>
-
 
 		<footer class="footer container-fluid">
 			<p>Designed by Nicholas Hanoian</p>
