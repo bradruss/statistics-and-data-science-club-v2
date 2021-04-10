@@ -19,18 +19,18 @@ Contact
             <div class="form-group py-1">
                 <label for="inputEmail">Email</label>
                 <div class="col-sm-14">
-                    <input type="email" class="form-control" id="inputEmail" placeholder="Email address">
+                    <input type="email" class="form-control" id="inputEmail" placeholder="Email address"/>
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group col-md-6 py-2">
                     <label for="inputFirstName">First Name</label>
-                    <input type="password" class="form-control" id="inputFirstName" placeholder="First name">
+                    <input type="text" class="form-control" id="inputFirstName" placeholder="First name"/>
                 </div>
                 <div class="form-group col-md-6 py-2">
                     <label for="inputLastName">Last Name</label>
-                    <input type="password" class="form-control" id="inputLastName" placeholder="Last name">
+                    <input type="text" class="form-control" id="inputLastName" placeholder="Last name"/>
                 </div>
             </div>
 
@@ -50,7 +50,7 @@ Contact
                 $('#submit').click(function() {
                     $('#emailForm').attr('action',
                         'mailto:isaac.lee@uvm.edu?subject=' +
-                        $('#inputEmail').val() + 'I hope this works' + '&body=' + $('#inputFirstName').val() + $('#inputLastName').val());
+                        $('#inputEmail').val() + '&body=' + $('#inputFirstName').val()); // + $('#inputLastName').val());
                     $('#emailForm').submit();
                 });
             });
