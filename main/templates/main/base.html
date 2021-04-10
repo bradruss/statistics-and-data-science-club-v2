@@ -10,6 +10,8 @@
 {% url 'main:links_url_name' as links %}
 {% url 'main:people_url_name' as people %}
 {% url 'main:asa_url_name' as asa %}
+{% url 'main:career_resources_url_name' as career_resources %}
+{% url 'main:contact_url_name' as contact %}
 
 
 
@@ -77,7 +79,7 @@
 
 						<li class="nav-item">
 							<!-- TODO: Add html page for career stuff -->
-							<a class="{% active request links %} nav-link" id="match-nav-bg" href="#">Career Resources</a>
+							<a class="{% active request links %} nav-link" id="match-nav-bg" href="{{career_resources}}">Career Resources</a>
 						</li>
 
 
@@ -91,7 +93,7 @@
 
 						<li class="nav-item">
 							<!-- TODO: Add html page for contact info -->
-							<a class="{% active request software %} nav-link" id="match-nav-bg" href="#">Contact</a>
+							<a class="{% active request software %} nav-link" id="match-nav-bg" href="{{contact}}">Contact</a>
 						</li>
 
 					</ul>
@@ -135,7 +137,7 @@
 
 						<li class="nav-item">
 							<!-- TODO: Add html page for career stuff -->
-							<a class="{% active request links %} nav-link" id="match-nav-bg" href="#">Career Resources</a>
+							<a class="{% active request links %} nav-link" id="match-nav-bg" href="{{career_resources}}">Career Resources</a>
 						</li>
 
 
@@ -149,7 +151,7 @@
 
 						<li class="nav-item">
 							<!-- TODO: Add html page for contact info -->
-							<a class="{% active request software %} nav-link" id="match-nav-bg" href="#">Contact</a>
+							<a class="{% active request software %} nav-link" id="match-nav-bg" href="{{contact}}">Contact</a>
 						</li>
 
 					</ul>
