@@ -16,18 +16,25 @@ Contact
         <h3 class="text-center">Email Sign-Up</h3>
 
         <form>
-            <div class="form-group row py-3">
+            <div class="form-group row py-1">
                 <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
                 <div class="col-sm-10">
                     <input type="email" class="form-control" id="inputEmail" placeholder="Email address">
                 </div>
             </div>
-            <div class="form-group row">
-                <label for="inputName" class="col-sm-2 col-form-label">Full Name</label>
+            <div class="form-group row py-1">
+                <label for="inputFirstName" class="col-sm-2 col-form-label">First Name</label>
                 <div class="col-sm-10">
-                    <input type="password" class="form-control" id="inputName" placeholder="First and last name">
+                    <input type="password" class="form-control" id="inputFirstName" placeholder="First name">
                 </div>
             </div>
+            <div class="form-group row py-1">
+                <label for="inputLastName" class="col-sm-2 col-form-label">Full Name</label>
+                <div class="col-sm-10">
+                    <input type="password" class="form-control" id="inputLastName" placeholder="First and last name">
+                </div>
+            </div>
+            <small id="privacyMessage" class="form-text text-muted">Don't worry, we'll never share this info with anyone.</small>
             <div class="form-group row">
                 <div class="col-sm-10 py-3">
                     <button type="submit" class="btn btn-primary">Submit</button>
@@ -43,31 +50,6 @@ Contact
 
 </div>
 
-
-    <!-- Old version -->
-    <!--		<form id="email-sign-up" class="">
-
-                &lt;!&ndash; Input email &ndash;&gt;
-                <div class="form-group row">
-                    <label for="input-email" class="col-sm-2 col-form-label-sm">Email</label>
-                    <input type="email" class="col-sm-6 form-control-sm" id="input-email" aria-describedby="emailHelp" placeholder="Enter email">
-                </div>
-
-                &lt;!&ndash; Input first name&ndash;&gt;
-                &lt;!&ndash;<div class="form-group row">
-                    <label for="input-first-name" class="col-form-label-sm">First name</label>
-                    <input type="text" class="form-control-sm" id="input-first-name" placeholder="Enter first name">
-                </div>&ndash;&gt;
-
-                &lt;!&ndash; Input last name &ndash;&gt;
-                &lt;!&ndash;<div class="form-group row">
-                    <label for="input-last-name" class="col-form-label-sm">Last name</label>
-                    <input type="text" class="form-control-sm" id="input-last-name" placeholder="Enter last name">
-                </div>
-    &ndash;&gt;
-                &lt;!&ndash;  &ndash;&gt;
-                <button type="submit" class="btn btn-primary" id="submit">Submit</button>
-            </form>-->
 </div>
 
 {% endblock %}
