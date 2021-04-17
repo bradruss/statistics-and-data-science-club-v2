@@ -13,29 +13,18 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-# Note: removed an extra os.path.dirname(
-# Note part 2: I PUT IT back so it mimics the silk server.
-
-###
-# TODO, maybe: If local: do local, if server: do on e level up
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
-# Code to generate new random secret key
-# from django.core.management import utils
-# print(utils.get_random_secret_key())
-
-
 # SECURITY WARNING: keep the secret key used in production secret!
-with open(os.path.join(BASE_DIR, 'secret_key.txt')) as f:
+with open(os.path.join(BASE_DIR, '../secret_key.txt')) as f:
     SECRET_KEY = f.read().strip()
-    # print("Found secret key successfully")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['statclub.w3.uvm.edu', '127.0.0.1']
 
@@ -133,11 +122,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, '/static/') #../www-root
+STATIC_ROOT = os.path.join(BASE_DIR, '../www-root/static/')
 
 # summernote
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, '/media/')
+MEDIA_ROOT = os.path.join(BASE_DIR, '../www-root/media/')
 
 
 
@@ -148,7 +137,7 @@ LOGGING = {
         'file': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
-            'filename': os.path.join(BASE_DIR, 'django-logs/django.log'),
+            'filename': os.path.join(BASE_DIR, '../django-logs/django.log'),
         },
     },
     'loggers': {
