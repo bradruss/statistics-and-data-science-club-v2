@@ -21,11 +21,7 @@ def career_resources(request):
     return render(request, 'main/career_resources.html')
 
 def contact(request):
-    form_class = ContactForm
-
-    return render(request, 'main/contact.html', {
-        'form': form_class,
-    })
+    return render(request, 'main/contact.html')
 
 def handler404(request, *args, **kwargs):
     return render(request, 'main/404.html', status=404)

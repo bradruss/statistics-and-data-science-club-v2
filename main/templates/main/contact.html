@@ -6,9 +6,6 @@
 Contact
 {% endblock %}
 
-{% load contact_form %}
-
-{% contact_form %}
 
 {% block content %}
 <h1>Contact</h1>
@@ -16,18 +13,11 @@ Contact
 <div class="row">
 
     <!-- Email sign-up form and button in left col-->
-    <div class="col-4 ml-5">
-        <h2>This is a person!</h2>
-        <p>Got questions? Contact Katherine Merill at katherine.merill@uvm.edu (This is placeholder text)</p>
-    </div>
 
-    <!-- People on right -->
     <div class="col-7 ml-3">
         <h3 class="text-center">Email Sign-Up</h3>
 
-        <form id="emailForm" role="" action="" method="post">
-            {% csrf_token %}
-
+        <form id="emailForm">
             <div class="form-group py-1">
                 <label for="inputEmail">Email</label>
                 <div class="col-sm-14">
@@ -69,6 +59,12 @@ Contact
             });
 
         </script>
+    </div>
+
+    <!-- People on right -->
+    <div class="col-4 ml-5">
+        <h2>This is a person!</h2>
+        <p>Got questions? Contact Katherine Merill at katherine.merill@uvm.edu (This is placeholder text)</p>
     </div>
 
 </div>
