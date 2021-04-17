@@ -81,7 +81,18 @@ header {
 	background: #a8d096;
 }
 
+/*Horizonal Lines*/
+hr {
+	height: 1.5px;
+	background-color: #ffffff;
+}
 
+/*Wrap text around images*/
+.img-wrap {
+	float: left;
+	padding: 0 10px 0 0;
+	width: 10%;
+}
 
 .fc-today.alert {
 	background-color:#c7e4f4;
