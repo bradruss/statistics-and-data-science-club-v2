@@ -1,5 +1,7 @@
 #+title: UVM Statistics and Data Science Club Website
 
+(Original README by Nicholas Hanoian)
+
 This is a Django website which was created for use by the UVM Statistics and Data Science Club. It features a blog which can be managed through the Django administrator interface, as well as several static pages. It uses [[https://fullcalendar.io/][FullCalendar]] to embed the club's google calendar into the homepage (Google's default embedding is very ugly). 
 
 The logo was created using R (see logo.r) as well as [[https://www.gimp.org/][GIMP]].
