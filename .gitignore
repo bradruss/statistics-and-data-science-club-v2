@@ -9,6 +9,7 @@ venv
 # Keep Secret Key Secret!
 /website/secret_key.txt
 secret_key.txt
+secret_email.txt
 IL-old-reference.png
 IL-revised-design-v1-flattened.png
 IL-revised-design-v1.pdn
