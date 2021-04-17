@@ -17,8 +17,11 @@ Contact
     <div class="col-7 ml-3">
         <h3 class="text-center">Email Sign-Up</h3>
 
-        <form id="emailForm">
-            <div class="form-group py-1">
+        <form id="emailForm" method="post">
+            {% csrf_token %}
+            {{form.as_p}}
+
+            <!--<div class="form-group py-1">
                 <label for="inputEmail">Email</label>
                 <div class="col-sm-14">
                     <input type="email" class="form-control" id="inputEmail" placeholder="Email address"/>
@@ -34,7 +37,7 @@ Contact
                     <label for="inputLastName">Last Name</label>
                     <input type="text" class="form-control" id="inputLastName" placeholder="Last name"/>
                 </div>
-            </div>
+            </div>-->
 
             <small id="privacyMessage" class="form-text text-muted">Don't worry, we'll never share this info with anyone.</small>
 
@@ -47,7 +50,7 @@ Contact
         </form>
 
         <!-- jQuery to send the email -->
-        <script>
+        <!--<script>
 
             $(document).ready(function() {
                 $('#submit').click(function() {
@@ -58,7 +61,7 @@ Contact
                 });
             });
 
-        </script>
+        </script>-->
     </div>
 
     <!-- People on right -->
