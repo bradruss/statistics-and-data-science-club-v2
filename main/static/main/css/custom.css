@@ -129,7 +129,10 @@ header {
 	border-color: #66ac47;
 }
 
+/*CSS for index to contact page button*/
 .btn-round {
 	background-color: #d36702;
 	border-radius: 8px;
+	width: 50%;
+	font-size: 20px;
 }
