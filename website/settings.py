@@ -23,10 +23,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 with open(os.path.join(BASE_DIR, '../secret_key.txt')) as f:
     SECRET_KEY = f.read().strip()
 
-# SECURITY WARNING: keep the secret email used in production secret!
-with open(os.path.join(BASE_DIR, '../secret_email.txt')) as f:
-    CONTACTFORM_RECIPIENTS = f
-
 # SECURITY WARNING: don't run with debug turned on in production!
 # TODO: Turn off once finished/deploying to server
 DEBUG = True
@@ -39,7 +35,6 @@ ALLOWED_HOSTS = ['statclub.w3.uvm.edu', '127.0.0.1']
 INSTALLED_APPS = [
     'main',
     'blog',
-    'contactform',
     'django_summernote',
     'django.contrib.admin',
     'django.contrib.auth',

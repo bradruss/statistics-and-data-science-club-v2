@@ -14,7 +14,6 @@ urlpatterns = [
 
     # New links for career + contact
     url(r'^career_resources/$', views.career_resources, name='career_resources_url_name'),
-    path(r'^contact/$', include('contactform.urls')),
     url(r'^contact/$', views.contact, name='contact_url_name')
 
 
