@@ -31,7 +31,7 @@ with open(os.path.join(BASE_DIR, '../secret_email.txt')) as f:
 # TODO: Turn off once finished/deploying to server
 DEBUG = True
 
-ALLOWED_HOSTS = ['statclub.w3.uvm.edu', 'iwlee.w3.uvm.edu', '127.0.0.1']
+ALLOWED_HOSTS = ['statclub.w3.uvm.edu', '127.0.0.1']
 
 
 # Application definition
