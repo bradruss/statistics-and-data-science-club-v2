@@ -38,27 +38,7 @@ def contact(request):
 
         if form.is_valid():
 
-
-#            load_dotenv()
-
- #           MY_ENV_VAR = os.getenv('MY_ENV_VAR')
-
-            message = Mail(
-                from_email='from_email@example.com',
-                to_emails='to@example.com',
-                subject='Sending with Twilio SendGrid is Fun',
-                html_content='<strong>and easy to do anywhere, even with Python</strong>')
-            try:
-                sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
-                response = sg.send(message)
-                print(response.status_code)
-                print(response.body)
-                print(response.headers)
-            except Exception as e:
-#                print(e.message)
-                print("e")
-
-            '''subject = "Website Inquiry"
+            subject = "Website Inquiry"
 
             body = {
             'first_name': form.cleaned_data['first_name'],
@@ -69,14 +49,14 @@ def contact(request):
 
             message = "\n".join(body.values())
 
-            email_from_form = body.get('email')
+            user_email = body.get('email')
 
             BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
             with open(os.path.join(BASE_DIR, '../secret_email.txt')) as f:
                 SECRET_EMAIL = f.read().strip()
 
             message = Mail(
-                from_email=email_from_form,
+                from_email=user_email,
                 to_emails=SECRET_EMAIL,
                 subject='Sending with Twilio SendGrid is Fun',
                 html_content='<strong>' + message + '</strong>'
@@ -89,7 +69,7 @@ def contact(request):
                 print(response.body)
                 print(response.headers)
             except Exception as e:
-                print(e.message)'''
+                print(e.message)
 
             return redirect ("/success/")
 
