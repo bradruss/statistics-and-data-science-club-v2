@@ -116,7 +116,6 @@ header {
 	color: #fff;
 	background-color: #007155;
 	border-color: #004c39;
-
 }
 
 .btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus, .show>.btn-primary.dropdown-toggle:focus {
@@ -128,4 +127,9 @@ header {
 	color: #fff;
 	background-color: #66ac47;
 	border-color: #66ac47;
+}
+
+.btn-round {
+	background-color: #d36702;
+	border-radius: 8px;
 }
