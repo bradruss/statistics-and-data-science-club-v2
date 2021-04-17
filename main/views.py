@@ -44,17 +44,30 @@ def contact(request):
             'message':form.cleaned_data['message'],
             }
 
-            from_email = body.get('email')
+            message = "\n".join(body.values())
+
+            email_from_form = body.get('email')
+
             BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
             with open(os.path.join(BASE_DIR, '../secret_email.txt')) as f:
                 SECRET_EMAIL = f.read().strip()
 
-            message = "\n".join(body.values())
+            message = Mail(
+                from_email=email_from_form,
+                to_emails=SECRET_EMAIL,
+                subject='Sending with Twilio SendGrid is Fun',
+                html_content='<strong>' + message + '</strong>'
+                )
 
             try:
-                send_mail(subject, message, from_email, [SECRET_EMAIL])
-            except BadHeaderError:
-                return HttpResponse('Invalid header found.')
+                sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
+                response = sg.send(message)
+                print(response.status_code)
+                print(response.body)
+                print(response.headers)
+            except Exception as e:
+                print(e.message)
+
             return redirect ("/success/")
 
     form = ContactForm()
