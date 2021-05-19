@@ -79,12 +79,12 @@ WSGI_APPLICATION = 'website.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-DATABASES = {
+'''DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
-}
+}'''
 
 
 # Password validation
@@ -163,7 +163,7 @@ EMAIL_HOST = 'smtp.sendgrid.net'
 EMAIL_HOST_USER = 'apikey'
 EMAIL_HOST_PASSWORD = '<sendgrid_password>'
 #EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-#EMAIL_BACKEND = 'django_smtp_ssl.SSLEmailBackend'
-EMAIL_BACKEND = 'sgbackend.SendGridBackend'
+EMAIL_BACKEND = 'django_smtp_ssl.SSLEmailBackend'
+#EMAIL_BACKEND = 'sgbackend.SendGridBackend'
 EMAIL_PORT = 465
 EMAIL_USE_TLS = True
