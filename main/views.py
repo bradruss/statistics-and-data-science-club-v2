@@ -1,12 +1,11 @@
 from django.shortcuts import render, redirect
 from .forms import ContactForm
-from django.core.mail import send_mail, BadHeaderError
+from django.core.mail import send_mail, BadHeaderError, EmailMessage
 from django.http import HttpResponse, HttpResponseRedirect
 import os
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
 from dotenv import load_dotenv
-
 
 # Create your views here.
 def index(request):
@@ -64,24 +63,23 @@ def contact(request):
                 SECRET_EMAIL = f.read().strip()
 
             # Create mail object
-            msgToSend = Mail(
+            send_email  = Mail(
                 from_email=user_email,
                 to_emails=SECRET_EMAIL,
                 subject='Sending with Twilio SendGrid is Fun',
                 html_content='<strong>' + message + '</strong>'
                 )
 
-            # Send email via normal mode
+            '''# Send email via normal mode
             try:
                 send_mail(subject, message, user_email, [SECRET_EMAIL])
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
             # Below is the SendGrid code, commented out now for testing
-            '''try:
-                echo "export SENDGRID_API_KEY='YOUR_API_KEY'" > sendgrid.env
-                echo "sendgrid.env" >> .gitignore
-                source ./sendgrid.env
+            '''
 
+            # Send email via SendGrid
+            try:
                 # Try to send it via SendGrid
                 sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
                 response = sg.send(msgToSend)
@@ -91,7 +89,7 @@ def contact(request):
 
             except Exception as e:
                 # If failed, print msg to console
-                print(e.message)'''
+                print(e.message)
 
             # If it works, go to success page.
             return redirect ("/success/")
