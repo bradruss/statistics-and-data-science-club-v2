@@ -39,9 +39,6 @@ def contact(request):
 
         if form.is_valid():
 
-            # Email subject
-            subject = "Website Inquiry"
-
             # Get the data from each field
             body = {
             'first_name': form.cleaned_data['first_name'],
@@ -63,11 +60,13 @@ def contact(request):
                 SECRET_EMAIL = f.read().strip()
 
             # Create mail object
-            send_email  = Mail(
+            send_email  = EmailMessage(
+                subject = "Website Inquiry",
+                to=[SECRET_EMAIL],
                 from_email=user_email,
-                to_emails=SECRET_EMAIL,
-                subject='Sending with Twilio SendGrid is Fun',
-                html_content='<strong>' + message + '</strong>'
+                reply_to=[user_email],
+                body = message,
+                headers = "Header"
                 )
 
             '''# Send email via normal mode
@@ -81,15 +80,17 @@ def contact(request):
             # Send email via SendGrid
             try:
                 # Try to send it via SendGrid
-                sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
-                response = sg.send(msgToSend)
-                print(response.status_code)
-                print(response.body)
-                print(response.headers)
+                # send_email.send(fail_silently="Oh god it broke")
+
+                # Old method
+#                sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
+#                response = sg.send(send_email)
+                response = send_email.send(fail_silently="Oh god it broke")
+                print(response)
 
             except Exception as e:
                 # If failed, print msg to console
-                print(e.message)
+                print(e)
 
             # If it works, go to success page.
             return redirect ("/success/")
