@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles'
+    #'sendemail.apps.SendemailConfig'
 ]
 
 MIDDLEWARE = [
@@ -148,10 +149,20 @@ LOGGING = {
     },
 }
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend' # new
-DEFAULT_FROM_EMAIL = 'will@learndjango.com'
-EMAIL_HOST = 'smtp.sendgrid.net' # new
-EMAIL_HOST_USER = 'apikey' # new
-EMAIL_HOST_PASSWORD = '<sendgrid_password>' # new
-EMAIL_PORT = 587 # new
-EMAIL_USE_TLS = True # new
+
+
+
+# Get email address to send to via os.path
+# IMPORTANT: KEEP SECRET EMAIL A SECRET!!!!
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+with open(os.path.join(BASE_DIR, '../secret_email.txt')) as f:
+    SECRET_EMAIL = f.read().strip()
+DEFAULT_FROM_EMAIL = SECRET_EMAIL
+
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = 'apikey'
+EMAIL_HOST_PASSWORD = '<sendgrid_password>'
+#EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = 'django_smtp_ssl.SSLEmailBackend'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True

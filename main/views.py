@@ -71,6 +71,11 @@ def contact(request):
                 html_content='<strong>' + message + '</strong>'
                 )
 
+            # Send email via normal mode
+            try:
+                send_mail(subject, message, user_email, [SECRET_EMAIL])
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
             # Below is the SendGrid code, commented out now for testing
             '''try:
                 echo "export SENDGRID_API_KEY='YOUR_API_KEY'" > sendgrid.env

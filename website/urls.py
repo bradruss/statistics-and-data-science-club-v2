@@ -24,9 +24,11 @@ import main
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    # URL Pattern for sending emails via form on contact.html
+    # path('', include('sendemail.urls')),
     path('blog/', include('blog.urls')),
     path('summernote/', include('django_summernote.urls')),
-    path('', include('main.urls')),
+    path('', include('main.urls'))
 ]
 
 handler404 = main.views.handler404
