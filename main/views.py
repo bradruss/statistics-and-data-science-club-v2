@@ -56,7 +56,7 @@ def contact(request):
             message = "\n".join(body.values())
 
             # Get email address from body dict
-            user_email = body.get('email')
+            from_email = body.get('email')
 
             # Get email address to send to via os.path
             # IMPORTANT: KEEP SECRET EMAIL A SECRET!!!!
@@ -64,34 +64,16 @@ def contact(request):
             with open(os.path.join(BASE_DIR, '../secret_email.txt')) as f:
                 SECRET_EMAIL = f.read().strip()
 
-            # Create mail object
-            send_email  = EmailMessage(
-                subject = "Website Inquiry",
-                to=[SECRET_EMAIL],
-                from_email=user_email,
-                reply_to=[user_email],
-                body = message,
-                headers = "Header"
+
+            # Send email via Django
+            try:
+                send_mail(
+                    'Subject: Test',
+                    message,
+                    from_email,
+                    [SECRET_EMAIL],
+                    fail_silently=False,
                 )
-
-            '''# Send email via normal mode
-            try:
-                send_mail(subject, message, user_email, [SECRET_EMAIL])
-            except BadHeaderError:
-                return HttpResponse('Invalid header found.')
-            # Below is the SendGrid code, commented out now for testing
-            '''
-
-            # Send email via SendGrid
-            try:
-                # Try to send it via SendGrid
-                # send_email.send(fail_silently="Oh god it broke")
-
-                # Old method
-#                sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
-#                response = sg.send(send_email)
-                response = send_email.send(fail_silently="Oh god it broke")
-                print(response)
 
             except Exception as e:
                 # If failed, print msg to console

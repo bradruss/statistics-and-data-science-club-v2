@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles'
-    #'sendemail.apps.SendemailConfig'
 ]
 
 MIDDLEWARE = [
@@ -159,11 +158,13 @@ with open(os.path.join(BASE_DIR, '../secret_email.txt')) as f:
     SECRET_EMAIL = f.read().strip()
 DEFAULT_FROM_EMAIL = SECRET_EMAIL
 
+# Email Backend settings
+EMAIL_BACKEND = 'sgbackend.SendGridBackend'
+#EMAIL_BACKEND = 'django_smtp_ssl.SSLEmailBackend'
+EMAIL_PORT = 465
+
+# Email Host settings
 EMAIL_HOST = 'smtp.sendgrid.net'
 EMAIL_HOST_USER = 'apikey'
 EMAIL_HOST_PASSWORD = '<sendgrid_password>'
-#EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_BACKEND = 'django_smtp_ssl.SSLEmailBackend'
-#EMAIL_BACKEND = 'sgbackend.SendGridBackend'
-EMAIL_PORT = 465
 EMAIL_USE_TLS = True
