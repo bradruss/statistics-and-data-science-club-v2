@@ -1,0 +1,15 @@
+{% extends 'main/index.html' %}
+
+{% block blog %}
+<h1>Blog posts</h1>
+
+
+{% for post in posts %}
+<div class="post">
+	<h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+	{{ post.created_date }} by {{ post.author.first_name }} {{ post.author.last_name }}
+	<!-- 	{{ post.content | safe }} -->
+	<!-- <p>{{ post.text | linebreaksbr }}</p> -->
+</div>
+{% endfor %}
+{% endblock %}

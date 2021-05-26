@@ -18,11 +18,23 @@
 UVM Stats and DS Club
 {% endblock %}
 
+{% block blog %}
+{% endblock %}
 
 {% block content %}
 
+<!-- Blog Posts -->
 <!--Row for all site cols-->
 <!--TODO: Make this adjust with mobile!!!!-->
+{% for post in posts %}
+<div class="post">
+	<h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+	{{ post.created_date }} by {{ post.author.first_name }} {{ post.author.last_name }}
+	<!-- 	{{ post.content | safe }} -->
+	<!-- <p>{{ post.text | linebreaksbr }}</p> -->
+</div>
+{% endfor %}
+
 <div class="row">
 	<!-- First col with banner, text, and blog posts-->
 	<div class="col-8">
@@ -46,7 +58,7 @@ UVM Stats and DS Club
 		<!-- Blog Post Previews -->
 		<div id="blog-previews">
 			<!--TODO: Replace placeholder items with actual posts in real time-->
-			<hr width="100%">
+			<!--<hr width="100%">
 				<p>	<img class="img-fluid img-wrap" style="display: inline;" src="{% static 'main/images/placeholder-pfp.png' %}">
 					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
 					dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
@@ -81,7 +93,10 @@ UVM Stats and DS Club
 					ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
 					eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
 					deserunt mollit anim id est laborum. (Read More)</p>
-			<hr width="100%">
+			<hr width="100%">-->
+
+
+
 		</div>
 
 	</div>

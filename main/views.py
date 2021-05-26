@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from .forms import ContactForm
 from django.core.mail import send_mail, BadHeaderError, EmailMessage
 from django.http import HttpResponse, HttpResponseRedirect
+from django.utils import timezone
+from .models import Post
 import os
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
@@ -9,7 +11,10 @@ from dotenv import load_dotenv
 
 # Create your views here.
 def index(request):
-    return render(request, 'main/index.html')
+    # Import Post models/objects into index.html
+    time = timezone.now()
+    posts = Post.objects.order_by('-created_date')
+    return render(request, 'main/index.html', {'posts': posts, 'time': time})
 
 def people(request):
     return render(request, 'main/people.html')
@@ -106,3 +111,9 @@ def handler404(request, *args, **kwargs):
 
 def handler500(request):
     return render(request, 'main/500.html', status=500)
+
+#def post_list(request):
+
+def post_detail(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    return render(request, 'main/post_detail.html', {'post': post})
