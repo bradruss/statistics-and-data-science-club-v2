@@ -3,7 +3,7 @@ from .forms import ContactForm
 from django.core.mail import send_mail, BadHeaderError, EmailMessage
 from django.http import HttpResponse, HttpResponseRedirect
 from django.utils import timezone
-from .models import Blog_Post
+from .models import Post
 import os
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
@@ -13,7 +13,7 @@ from dotenv import load_dotenv
 def index(request):
     # Import Post models/objects into index.html
     time = timezone.now()
-    posts = Blog_Post.objects.order_by('-created_date')
+    posts = Post.objects.order_by('-created_date')
     return render(request, 'main/index.html', {'posts': posts, 'time': time})
 
 def people(request):
@@ -112,11 +112,8 @@ def handler404(request, *args, **kwargs):
 def handler500(request):
     return render(request, 'main/500.html', status=500)
 
-def post_list(request):
-    time = timezone.now()
-    posts = Blog_Post.objects.order_by('-created_date')
-    return render(request, 'main/post_list.html', {'posts': posts, 'time': time})
+#def post_list(request):
 
 def post_detail(request, pk):
-    post = get_object_or_404(Blog_Post, pk=pk)
+    post = get_object_or_404(Post, pk=pk)
     return render(request, 'main/post_detail.html', {'post': post})

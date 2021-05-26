@@ -7,15 +7,12 @@
 {% url 'main:index_url_name' as index %}
 {% url 'main:software_url_name' as software %}
 {% url 'blog_url_name' as blog %}
-{% url 'main:post_detail' as post %}
 {% url 'main:links_url_name' as links %}
 {% url 'main:people_url_name' as people %}
 {% url 'main:asa_url_name' as asa %}
 {% url 'main:career_resources_url_name' as career_resources %}
 {% url 'main:contact_url_name' as contact %}
 {% url 'main:success_url_name' as success %}
-
-{% url 'main:post_list' as post_list %}
 
 
 
@@ -157,14 +154,7 @@
 		</header>
 
 		<main class="container" id="main-content">
-			<h4>Content:</h4>
 			{% block content %}
-			{% endblock %}
-			<h4>Blog:</h4>
-			{% block blog %}
-			{% endblock %}
-			<h4>Calendar:</h4>
-			{% block calendar %}
 			{% endblock %}
 		</main>
 
