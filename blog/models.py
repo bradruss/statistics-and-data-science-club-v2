@@ -6,6 +6,9 @@ from django.utils import timezone
 class Post(models.Model):
     author = models.ForeignKey('auth.User', related_name="user", on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
+
+    # Get pk as id
+    id = models.PositiveIntegerField(primary_key=True)
     # text = models.TextField()
     content = models.TextField()
     post_self = models.ManyToManyField('self')
