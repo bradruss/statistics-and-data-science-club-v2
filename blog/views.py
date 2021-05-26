@@ -6,9 +6,9 @@ from django.db.models import Max
 
 
 def index(request):
+
+    # Get time
     time = timezone.now()
-    # Get indeces for last 4 blog posts
-    #len(Post.objects)
 
     # Get indeces for ids
     values = Post.objects.all().values()
@@ -17,11 +17,16 @@ def index(request):
     max = Post.objects.aggregate(Max('id'))
     max = max.get('id__max')
 
+    # Fill filter list with certain values from descending from the max id
+    # RESULT: filter_list = [max,max - 1,max - 2,max - 3,max-4,max-5,...]
+    filter_list = []
+    for x in range(5):
+        filter_list.append(max)
+        max -= 1
 
-    # With all summernote blog posts ordered by the date created, filter in latest 4 posts
-    # Post.objects returns a QuerySet
-    posts = Post.objects.order_by('-created_date').filter(id__in=[24,25,26,23]) # .filter(id__lte=6)
-    return render(request, 'blog/index.html', {'posts': posts, 'time': time, 'values': values, 'max' : max})
+    # With all summernote blog posts ordered by the date created, filter in latest X posts
+    posts = Post.objects.order_by('-created_date').filter(id__in=filter_list) # .filter(id__lte=6)
+    return render(request, 'blog/index.html', {'posts': posts, 'time': time, 'values': values, 'max' : max, 'filter_list': filter_list})
 
 
 def post_list(request):
