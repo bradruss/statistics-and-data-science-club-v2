@@ -14,7 +14,7 @@ def index(request):
     # Import Post models/objects into index.html
     time = timezone.now()
     posts = Post.objects.order_by('-created_date')
-    return render(request, 'main/index.html', {'posts': posts, 'time': time})
+    return render(request, 'blog/index.html', {'posts': posts, 'time': time})
 
 def people(request):
     return render(request, 'main/people.html')

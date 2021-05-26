@@ -3,6 +3,7 @@ from .models import Post
 
 from django_summernote.admin  import SummernoteModelAdmin
 
+# Register model for summernote blog posts
 class PostAdmin(SummernoteModelAdmin):
     summernote_fields = ('content',)
 

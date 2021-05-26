@@ -57,43 +57,20 @@ UVM Stats and DS Club
 
 		<!-- Blog Post Previews -->
 		<div id="blog-previews">
-			<!--TODO: Replace placeholder items with actual posts in real time-->
-			<!--<hr width="100%">
-				<p>	<img class="img-fluid img-wrap" style="display: inline;" src="{% static 'main/images/placeholder-pfp.png' %}">
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-					dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-					ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
-					eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-					deserunt mollit anim id est laborum. (Read More)</p>
+
+			{% for post in posts %}
+
+			<!-- Solid Line -->
 			<hr width="100%">
-				<p>	<img class="img-fluid img-wrap" style="display: inline;" src="{% static 'main/images/placeholder-pfp.png' %}">
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-					dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-					ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
-					eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-					deserunt mollit anim id est laborum. (Read More)</p>
-			<hr width="100%">
-				<p>	<img class="img-fluid img-wrap" style="display: inline;" src="{% static 'main/images/placeholder-pfp.png' %}">
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-					dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-					ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
-					eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-					deserunt mollit anim id est laborum. (Read More)</p>
-			<hr width="100%">
-				<p>	<img class="img-fluid img-wrap" style="display: inline;" src="{% static 'main/images/placeholder-pfp.png' %}">
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-					dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-					ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
-					eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-					deserunt mollit anim id est laborum. (Read More)</p>
-			<hr width="100%">
-				<p>	<img class="img-fluid img-wrap" style="display: inline;" src="{% static 'main/images/placeholder-pfp.png' %}">
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-					dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-					ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
-					eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-					deserunt mollit anim id est laborum. (Read More)</p>
-			<hr width="100%">-->
+
+			<!-- Post Content -->
+			<div class="post">
+<!--				<h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>-->
+				<p>{{ post.created_date }} by {{ post.author.first_name }} {{ post.author.last_name }}
+					{{ post.content | safe }} </p>
+				<!-- <p>{{ post.text | linebreaksbr }}</p> -->
+			</div>
+			{% endfor %}
 
 
 
@@ -126,135 +103,6 @@ UVM Stats and DS Club
 		color=%230C6A1D&amp;color=%230C6A1D&amp;color=%230C6A1D&amp;mode=AGENDA" style="border:solid 1px #777"
 				class="mt-4 mx-auto" width="100%" height="1000" frameborder="0" scrolling="no"></iframe>
 
-		<!--<div class="mt-5 row" id="calendar">
-            &lt;!&ndash; popup for calendar events &ndash;&gt;
-            <div id="fullCalModal" class="modal fade">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 id="modalTitle" class="modal-title"></h4>
-                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span> <span class="sr-only">close</span></button>
-                        </div>
-                        &lt;!&ndash; body &ndash;&gt;
-                        <div class="modal-body container">
-                            <div class="row">
-                                <p class="col-1"><i class="far fa-clock"></i></p>
-                                <p class="col" id="modalTime"></p>
-                            </div>
-
-                            <div class="row" id="locationRow">
-                                <p class="col-1"><i class="fas fa-map-marker-alt"></i></p>
-                                <p class="col" id="modalLocation"></p>
-                            </div>
-
-                            <div class="row" id="descriptionRow">
-                                <p class="col-1"><i class="fas fa-align-left"></i></p>
-                                <p class="col" id="modalDescription"></p>
-                            </div>
-
-                        </div>
-
-
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <a class="btn btn-primary" id="eventUrl" target="_blank">Event Page</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            &lt;!&ndash; Calendar jQuery &ndash;&gt;
-            <script>
-
-
-                $(document).ready(function() {
-
-                    $('#calendar').fullCalendar({
-
-                        header: {
-                            left: 'prev,next today',
-                            center: 'title',
-                            right: 'month,listYear'
-                        },
-                        themeSystem: 'bootstrap4',
-                        /* 		 displayEventTime: false, // don't show the time column in list view */
-
-                        // To make your own Google API key, follow the directions here:
-                        // http://fullcalendar.io/docs/google_calendar/
-                        // statclub@uvm.edu api key
-                        googleCalendarApiKey: 'AIzaSyBrbsv3gRkz-Oldoc1-4iVOcsHHQxZyLEI',
-
-                        // US Holidays
-                        events: {
-                            googleCalendarId: 'statclub@uvm.edu'
-                        },
-
-
-                        eventClick:  function(event, jsEvent, view) {
-                            console.log(event);
-
-                            $('#modalTitle').html(event.title);
-                            if (event.description) {
-                                $('#modalDescription').html(event.description);
-                                $('#descriptionRow').show();
-                            } else {
-                                $('#descriptionRow').hide();
-                            }
-                            if (event.location) {
-                                $('#modalLocation').html(event.location);
-                                $('#locationRow').show();
-                            } else {
-                                $('#locationRow').hide();
-                            }
-
-
-                            let dateOptions = { weekday: 'long', month: 'long', day: 'numeric' };
-                            let timeOptions = { hour12: true, hour: "numeric", minute: "numeric" };
-
-                            let startDate = new Date(event.start._i);
-                            let endDate = new Date(event.end._i);
-
-                            let startDay = startDate.toLocaleDateString('en-US', dateOptions);
-                            let endDay = endDate.toLocaleDateString('en-US', dateOptions);
-
-                            let startTime = startDate.toLocaleString('en-US', timeOptions).toLowerCase();
-                            let endTime = endDate.toLocaleString('en-US', timeOptions).toLowerCase();
-
-
-                            console.log(event);
-                            /* 			 console.log(endDay); */
-                            if (startDay === endDay) {
-                                $('#modalTime').html(startDay + ' ⋅ ' + startTime + ' – ' + endTime);
-                            } else {
-                                $('#modalTime').html(startDay + ', ' + startTime + ' – ' + endDay + ', ' + endTime);
-                            }
-
-
-
-                            $('#eventUrl').attr('href', event.url);
-                            $('#fullCalModal').modal();
-                            return false;
-                        },
-
-                    });
-
-                });
-
-            </script>
-
-
-
-        </div>-->
 	</div>
 </div>
-
-
-
-
-
-
-
-
-
-
 {% endblock %}

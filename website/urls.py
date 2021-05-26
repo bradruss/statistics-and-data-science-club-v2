@@ -26,9 +26,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # URL Pattern for sending emails via form on contact.html
     # path('', include('sendemail.urls')),
-    path('blog/', include('blog.urls')),
+    path('', include('blog.urls')),
     path('summernote/', include('django_summernote.urls')),
-    path('', include('main.urls'))
+    path('main/', include('main.urls', 'blog.urls'))
 ]
 
 handler404 = main.views.handler404
