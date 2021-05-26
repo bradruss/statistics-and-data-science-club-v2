@@ -1,7 +1,7 @@
 Django==2.1.2
 django-summernote==0.8.11.6
 django_smtp_ssl==1.0
-sendgrid-django
+sendgrid-django==4.2.0
 pytz==2018.9
 sendgrid
 python-dotenv

@@ -158,13 +158,32 @@ with open(os.path.join(BASE_DIR, '../secret_email.txt')) as f:
     SECRET_EMAIL = f.read().strip()
 DEFAULT_FROM_EMAIL = SECRET_EMAIL
 
+# Same for emp
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+with open(os.path.join(BASE_DIR, '../secret_emp.txt')) as f:
+    SECRET_EMP = f.read().strip()
+
+# Same for apikey
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+with open(os.path.join(BASE_DIR, '../secret_apikey.txt')) as f:
+    SECRET_APIKEY = f.read().strip()
+
 # Email Backend settings
-EMAIL_BACKEND = 'sgbackend.SendGridBackend'
+# TODO: Uncomment if switching between normal and sendgrid email methods
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+#EMAIL_BACKEND = 'sgbackend.SendGridBackend'
 #EMAIL_BACKEND = 'django_smtp_ssl.SSLEmailBackend'
-EMAIL_PORT = 465
+#EMAIL_PORT = 465
+EMAIL_PORT = 567
 
 # Email Host settings
+#EMAIL_HOST = 'smtp.gmail.com'
+#EMAIL_HOST_USER = SECRET_EMAIL
+#EMAIL_HOST_PASSWORD = SECRET_EMP
 EMAIL_HOST = 'smtp.sendgrid.net'
 EMAIL_HOST_USER = 'apikey'
-EMAIL_HOST_PASSWORD = '<sendgrid_password>'
+EMAIL_HOST_PASSWORD = SECRET_APIKEY
+
+# Email options
+#EMAIL_USE_SSL = True
 EMAIL_USE_TLS = True

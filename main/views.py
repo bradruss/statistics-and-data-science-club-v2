@@ -64,23 +64,56 @@ def contact(request):
             with open(os.path.join(BASE_DIR, '../secret_email.txt')) as f:
                 SECRET_EMAIL = f.read().strip()
 
-
-            # Send email via Django
-            try:
-                send_mail(
-                    'Subject: Test',
-                    message,
-                    from_email,
-                    [SECRET_EMAIL],
-                    fail_silently=False,
+            # Create mail object
+            send_email  = EmailMessage(
+                from_email=from_email,
+                to=[SECRET_EMAIL],
+                subject='Sending with Twilio SendGrid is Fun',
+                body=message
+                #html_content='<strong>' + message + '</strong>'
                 )
+
+            '''# Send email via normal mode
+            try:
+                send_mail(subject, message, user_email, [SECRET_EMAIL])
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
+            # Below is the SendGrid code, commented out now for testing
+            '''
+
+            # Send email via SendGrid
+            try:
+
+                # Get apikey
+                BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+                with open(os.path.join(BASE_DIR, '../secret_apikey.txt')) as f:
+                    SECRET_APIKEY = f.read().strip()
+
+                # Try to send it via SendGrid
+                send_email.send(fail_silently=fail_silently)
+
+                '''sg = SendGridAPIClient(os.environ.get('SECRET_APIKEY'))
+                response = sg.send(msgToSend)
+                print(response.status_code)
+                print(response.body)
+                print(response.headers)'''
+
+                # Send email via Django
+                '''try:
+                    send_mail(
+                        'Subject: Test',
+                        message,
+                        from_email,
+                        [SECRET_EMAIL],
+                        fail_silently=False,
+                    )'''
 
             except Exception as e:
                 # If failed, print msg to console
                 print(e)
 
             # If it works, go to success page.
-            return redirect ("/success/")
+            return redirect ("/main/success/")
 
     form = ContactForm()
     return render(request, "main/contact.html", {'form':form})
