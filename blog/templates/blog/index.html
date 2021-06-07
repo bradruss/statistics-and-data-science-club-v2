@@ -67,14 +67,12 @@ UVM Stats and DS Club
 				<!-- Post Content -->
 				<div class="post">
 					<h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
-					<p>Post: {{ post.id }}</p>
+					<p>{{ post.content | safe}}</p>
 					<p>{{ post.created_date }} by {{ post.author.first_name }} {{ post.author.last_name }}</p>
 					<!--					{{ post.content | safe }} </p>-->
 					<!-- <p>{{ post.text | linebreaksbr }}</p> -->
 				</div>
 				{% endfor %}
-
-
 
 			</div>
 	</div>
@@ -95,14 +93,11 @@ UVM Stats and DS Club
 			<form method="GET" class="text-center mx-auto" action="{{contact}}">
 				<input class="btn btn-warning btn-round btn-block my-2 px-5 py-2" type="submit" value="Click Here!"/>
 			</form>
-			<!--			<button " type="submit" onclick="window.location.href=contact.html" href="{{contact}}"></button>-->
-			<!--			<form class="mx-auto" style="width: 40%;">-->
-			<!--			</form>-->
 		</div>
 
 		<!-- Calendar -->
 		<iframe src="https://calendar.google.com/calendar/embed?height=1000&amp;wkst=1&amp;bgcolor=%237CB342&amp;ctz=America%2FNew_York&amp;src=c3RhdGNsdWIudXZtQGdtYWlsLmNvbQ&amp;color=%23039BE5&amp;mode=AGENDA&amp;showNav=1&amp;showTitle=1&amp;showDate=1&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;showTz=1"
-				class="mt-4 mx-auto" width="100%"  height="1000" frameborder="0" scrolling="no"></iframe>
+				class="mt-4 mx-auto" width="100%"  height="1500" frameborder="0" scrolling="no"></iframe>
 		</div>
 	</div>
 </div>
@@ -135,17 +130,6 @@ UVM Stats and DS Club
 		<!-- Blog Post Previews -->
 		<div id="blog-previews">
 
-			<!--<p>Max: {{max}}</p>
-
-            {% for value in values %}
-            <p>{{value.id}}</p>
-            {% endfor %}-->
-
-			<!-- Helpful for debugging how many blog posts appear on the front page:
-            {% for item in filter_list %}
-                <p>{{item}}</p>
-            {% endfor %}-->
-
 			{% for post in posts %}
 
 			<!-- Solid Line -->
@@ -154,7 +138,6 @@ UVM Stats and DS Club
 			<!-- Post Content -->
 			<div class="post">
 				<h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
-				<p>Post: {{ post.id }}</p>
 				<p>{{ post.created_date }} by {{ post.author.first_name }} {{ post.author.last_name }}</p>
 				<!--					{{ post.content | safe }} </p>-->
 				<!-- <p>{{ post.text | linebreaksbr }}</p> -->
