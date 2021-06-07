@@ -8,13 +8,45 @@ Contact
 
 
 {% block content %}
-<h1>Contact</h1>
+<!-- This is the desktop version - hidden on screens smaller than large -->
+<div class="d-none d-lg-block">
+    <h1>Contact</h1>
+    <div class="row">
 
-<div class="row">
+        <!-- Email sign-up form and button in left col-->
+        <div class="col-7 ml-3">
+            <h3 class="text-left mt-4">Email Sign-Up</h3>
 
-    <!-- Email sign-up form and button in left col-->
-    <div class="col-7 ml-3">
-        <h3 class="text-left mt-4">Email Sign-Up</h3>
+            <form action="mailto:listserv@list.uvm.edu?body=subscribe%20STATANDDATASCIENCECLUB%20" method="post" id="emailForm" enctype="text/plain">
+                <div class="form-group row">
+                    <div class="col-sm-10 pt-2 mb-4 form-actions">
+                        <button type="submit" id="submit" class="btn btn-primary btn-lg">Subscribe to Mailing List</button>
+                    </div>
+                </div>
+
+            </form>
+
+            <a class="my-5" href="https://www.uvm.edu/it/kb/article/listserv-subscription-management-and-administration/">If the button doesn't work, click here for further instructions</a>
+
+        </div>
+
+        <!-- People on right -->
+        <div class="col-4 ml-5">
+            <h2>Questions?</h2>
+            <p>Got questions? Contact Katherine Merill at katherine.merill@uvm.edu</p>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- This is the mobile version - hidden on screens that are large or wider -->
+<div class="d-lg-none d-xl-none">
+    <h1>Contact</h1>
+    <div class="text-center">
+
+        <!-- Email sign-up form and button in left col-->
+        <h3 class="text-center mt-4">Email Sign-Up</h3>
 
         <form action="mailto:listserv@list.uvm.edu?body=subscribe%20STATANDDATASCIENCECLUB%20" method="post" id="emailForm" enctype="text/plain">
             <div class="form-group row">
@@ -25,18 +57,10 @@ Contact
 
         </form>
 
-        <a class="my-5" href="https://www.uvm.edu/it/kb/article/listserv-subscription-management-and-administration/">If the button doesn't work, click here for further instructions</a>
+        <a class="my-5 text-center" href="https://www.uvm.edu/it/kb/article/listserv-subscription-management-and-administration/">If the button doesn't work, click here for further instructions</a>
 
+        <h2 class="text-center">Questions?</h2>
+        <p class="text-center">Got questions? Contact Katherine Merill at katherine.merill@uvm.edu</p>
     </div>
-
-    <!-- People on right -->
-    <div class="col-4 ml-5">
-        <h2>Questions?</h2>
-        <p>Got questions? Contact Katherine Merill at katherine.merill@uvm.edu</p>
-    </div>
-
 </div>
-
-</div>
-
 {% endblock %}

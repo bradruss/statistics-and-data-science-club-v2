@@ -1,20 +1,43 @@
 {% extends 'main/base.html' %} 
 
 {% block content %}
-<!--Add margins to both sides-->
-<div class="mx-5 py-4" style="background-color: #636363;">
-	<div class="mx-5">
 
-		<!--Begin content-->
-		<h1 class="text-center display-4 my-4">{{ post.title }}</h1>
-		<div class="text-center" style="font-size:14px">
-			{{ post.created_date }} by {{ post.author.first_name }} {{ post.author.last_name }}
-		</div>
-		<div class="my-5 mx-auto text-center" style="font-size:20px; -color:'white'">
-			{{ post.content | safe }}
-			<a class="mt-5" style="font-size:18px; color:#202D7D" href="{% url 'blog_url_name' %}">Back</a>
-		</div>
+<!-- This is the desktop version - hidden on screens smaller than large -->
+<div class="d-none d-lg-block">
+	<!--Add margins to both sides-->
+	<div class="mx-5 py-4" style="background-color: #636363;">
+		<div class="mx-5">
 
+			<!--Begin content-->
+			<h1 class="text-center display-4 my-4">{{ post.title }}</h1>
+			<div class="text-center" style="font-size:14px">
+				{{ post.created_date }} by {{ post.author.first_name }} {{ post.author.last_name }}
+			</div>
+			<div class="my-5 mx-auto text-center" style="font-size:20px; color: #FFFFFF">
+				{{ post.content | safe }}
+				<a class="mt-5" style="font-size:18px; color:#202D7D" href="{% url 'blog_url_name' %}">Back</a>
+			</div>
+
+		</div>
 	</div>
 </div>
+
+<!-- This is the mobile version - hidden on screens that are large or wider -->
+<div class="d-lg-none d-xl-none">
+	<div class="py-4" style="background-color: #636363;">
+		<!--Begin content-->
+		<div class="mx-3">
+			<h1 class="text-center my-4">{{ post.title }}</h1>
+			<div class="text-center" style="font-size:14px">
+				{{ post.created_date }} by {{ post.author.first_name }} {{ post.author.last_name }}
+			</div>
+			<div class="my-5 text-center img-fluid" style="color: #FFFFFF">
+				{{ post.content | safe }}
+				<a class="mt-5" style="font-size:18px; color:#202D7D" href="{% url 'blog_url_name' %}">Back</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
 {% endblock %}
