@@ -1,11 +1,20 @@
 {% extends 'main/base.html' %} 
 
 {% block content %}
-<h1>{{ post.title }}</h1>
-{{ post.created_date }} by {{ post.author.first_name }} {{ post.author.last_name }}
-<div class="my-4">
-	{{ post.content | safe }}
-</div>
+<!--Add margins to both sides-->
+<div class="mx-5 py-4" style="background-color: #636363;">
+	<div class="mx-5">
 
-<a href="{% url 'blog_url_name' %}">Back</a>
+		<!--Begin content-->
+		<h1 class="text-center display-4 my-4">{{ post.title }}</h1>
+		<div class="text-center" style="font-size:14px">
+			{{ post.created_date }} by {{ post.author.first_name }} {{ post.author.last_name }}
+		</div>
+		<div class="my-5 mx-auto text-center" style="font-size:20px; -color:'white'">
+			{{ post.content | safe }}
+			<a class="mt-5" style="font-size:18px; color:#202D7D" href="{% url 'blog_url_name' %}">Back</a>
+		</div>
+
+	</div>
+</div>
 {% endblock %}
