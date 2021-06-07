@@ -12,33 +12,27 @@ Contact
 
 <div class="row">
 
-    <!-- Alternative placeholder emial signup button -->
-    <!-- TODO: Get first name and last name into this command -->
-    <a href="mailto:listserv@list.uvm.edu?body=subscribe%20STATANDDATASCIENCECLUB%20%5Bfirst_name%5D%20%5Blast_name%5D">Send mail</a>
-
     <!-- Email sign-up form and button in left col-->
     <div class="col-7 ml-3">
-        <h3 class="text-center">Email Sign-Up</h3>
+        <h3 class="text-left mt-4">Email Sign-Up</h3>
 
-        <form action="mailto:listserv@list.uvm.edu?body=subscribe%20STATANDDATASCIENCECLUB%20myform_submission" method="post" id="emailForm" enctype="text/plain"> <!-- method="post">-->
-            {% csrf_token %}
-            {{form.as_p}}
-            <small id="privacyMessage" class="form-text text-muted">Don't worry, we'll never share this info with anyone.</small>
-
+        <form action="mailto:listserv@list.uvm.edu?body=subscribe%20STATANDDATASCIENCECLUB%20" method="post" id="emailForm" enctype="text/plain">
             <div class="form-group row">
-                <div class="col-sm-10 py-3 form-actions">
-                    <button type="submit" id="submit" class="btn btn-primary">Submit</button>
+                <div class="col-sm-10 pt-2 mb-4 form-actions">
+                    <button type="submit" id="submit" class="btn btn-primary btn-lg">Subscribe to Mailing List</button>
                 </div>
             </div>
 
         </form>
 
+        <a class="my-5" href="https://www.uvm.edu/it/kb/article/listserv-subscription-management-and-administration/">If the button doesn't work, click here for further instructions</a>
+
     </div>
 
     <!-- People on right -->
     <div class="col-4 ml-5">
-        <h2>This is a person!</h2>
-        <p>Got questions? Contact Katherine Merill at katherine.merill@uvm.edu (This is placeholder text)</p>
+        <h2>Contact the Club Advisor!</h2>
+        <p>Got questions? Contact Katherine Merill at katherine.merill@uvm.edu</p>
     </div>
 
 </div>
