@@ -20,7 +20,7 @@ Contact
     <div class="col-7 ml-3">
         <h3 class="text-center">Email Sign-Up</h3>
 
-        <form id="emailForm" method="post">
+        <form action="mailto:listserv@list.uvm.edu?body=subscribe%20STATANDDATASCIENCECLUB%20myform_submission" method="post" id="emailForm" enctype="text/plain"> <!-- method="post">-->
             {% csrf_token %}
             {{form.as_p}}
             <small id="privacyMessage" class="form-text text-muted">Don't worry, we'll never share this info with anyone.</small>

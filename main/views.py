@@ -37,7 +37,11 @@ def career_resources(request):
 def contact(request):
 
     # Code for sending an email using the data in the form via SendGrid
-    if request.method == 'POST':
+    if request.method == 'GET':
+
+        form = ContactForm()
+
+    elif request.method == 'POST':
 
         # Get form data after submit
         form = ContactForm(request.POST)
@@ -64,24 +68,23 @@ def contact(request):
             with open(os.path.join(BASE_DIR, '../secret_email.txt')) as f:
                 SECRET_EMAIL = f.read().strip()
 
-            # Create mail object
+            '''# Create mail object
             send_email  = EmailMessage(
                 from_email=from_email,
                 to=[SECRET_EMAIL],
                 subject='Sending with Twilio SendGrid is Fun',
                 body=message
                 #html_content='<strong>' + message + '</strong>'
-                )
+                )'''
 
-            '''# Send email via normal mode
+            # Send email via normal mode
             try:
                 send_mail(subject, message, user_email, [SECRET_EMAIL])
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
-            # Below is the SendGrid code, commented out now for testing
-            '''
 
-            # Send email via SendGrid
+            # Below is the SendGrid code, commented out now for testing
+            '''# Send email via SendGrid
             try:
 
                 # Get apikey
@@ -92,7 +95,7 @@ def contact(request):
                 # Try to send it via SendGrid
                 send_email.send(fail_silently=fail_silently)
 
-                '''sg = SendGridAPIClient(os.environ.get('SECRET_APIKEY'))
+                sg = SendGridAPIClient(os.environ.get('SECRET_APIKEY'))
                 response = sg.send(msgToSend)
                 print(response.status_code)
                 print(response.body)
