@@ -21,11 +21,104 @@ UVM Stats and DS Club
 {% endblock %}
 
 {% block content %}
-<!--Row for all site cols-->
-<!--TODO: Make this adjust with mobile!!!!-->
-<div class="row">
+<!-- This is the desktop version - hidden on screens smaller than large -->
+<div class="d-none d-lg-block">
+
+	<!--Row for all site cols-->
+	<div class="row">
+		<!-- First col with banner, text, and blog posts-->
+		<div class="col-8">
+
+			<!-- banner, mb-5 = margin level 5 -->
+			<div class="mb-5 float-left col">
+				<img src="{% static 'main/images/banner-adjusted.png' %}" class="img-fluid">
+			</div>
+
+			<!-- Header and main text -->
+			<div id="main-text">
+				<div class="text-center">
+					<h1>Welcome to the Statistics and Data Science club website!</h1>
+				</div>
+
+				<p>Hello, and welcome to Statistics and Data Science Club! If you are interested in getting involved with numbers, then you've come to the right place! With biweekly meetings and planned events, we strive to introduce members to the possibilities open to them in the field of stats and data. Everyone is welcome to join, regardless of major.</p>
+
+				<p>Come join the fun at our next meeting in the Student Club Space at Innovation Hall, E327!</p>
+			</div>
+
+			<!-- Blog Post Previews -->
+			<div id="blog-previews">
+
+				<!--<p>Max: {{max}}</p>
+
+				{% for value in values %}
+				<p>{{value.id}}</p>
+				{% endfor %}-->
+
+				<!-- Helpful for debugging how many blog posts appear on the front page:
+				{% for item in filter_list %}
+					<p>{{item}}</p>
+				{% endfor %}-->
+
+				{% for post in posts %}
+
+				<!-- Solid Line -->
+				<hr width="100%">
+
+				<!-- Post Content -->
+				<div class="post">
+					<h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+					<p>Post: {{ post.id }}</p>
+					<p>{{ post.created_date }} by {{ post.author.first_name }} {{ post.author.last_name }}</p>
+					<!--					{{ post.content | safe }} </p>-->
+					<!-- <p>{{ post.text | linebreaksbr }}</p> -->
+				</div>
+				{% endfor %}
+
+
+
+			</div>
+	</div>
+
+	<!-- Second col with listserv sign-up and calendar -->
+	<div class="col-4">
+
+		<!-- Email sign-up form and button -->
+		<div class="row mt-5">
+			<h1 class="mx-auto mt-2 text-center" style="width: 40%;">Interested?</h1>
+		</div>
+
+		<div class="row">
+			<h1 class="mx-auto text-center" style="width: 40%;">Join our LISTSERV!</h1>
+		</div>
+
+		<div class="row mb-5">
+			<form method="GET" class="text-center mx-auto" action="{{contact}}">
+				<input class="btn btn-warning btn-round btn-block my-2 px-5 py-2" type="submit" value="Click Here!"/>
+			</form>
+			<!--			<button " type="submit" onclick="window.location.href=contact.html" href="{{contact}}"></button>-->
+			<!--			<form class="mx-auto" style="width: 40%;">-->
+			<!--			</form>-->
+		</div>
+
+		<!-- Calendar -->
+		<!--Other Calendar:-->
+		<!--<iframe src="https://calendar.google.com/calendar/embed?height=1000&amp;wkst=1&amp;bgcolor=%2366ac47&amp;ctz=America%2FNew_York&amp;src=YWN0dWFscXVhbGl0eWNvbnRlbnRAZ21haWwuY29t&amp;src=YWRkcmVzc2Jvb2sjY29udGFjdHNAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&amp;src=ZW4udXNhI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&amp;color=%23039BE5&amp;color=%2333B679&amp;color=%230B8043&amp;mode=AGENDA" style="border:solid 1px #777" width="350" height="1000" frameborder="0" scrolling="no"></iframe>-->
+		<iframe src="https://calendar.google.com/calendar/embed?height=1000&amp;wkst=1&amp;bgcolor=%2366AC47&amp;ctz=America%2FNew_York&amp;src=YWN0dWFscXVhbGl0eWNvbnRlbnRAZ21haWwuY29t&amp;src=YWRkcmVzc2Jvb2sjY29udGFjdHNAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&amp;src=ZW4udXNhI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&amp;
+		color=%230C6A1D&amp;color=%230C6A1D&amp;color=%230C6A1D&amp;mode=AGENDA" style="border:solid 1px #777"
+				class="mt-4 mx-auto" width="100%" height="1000" frameborder="0" scrolling="no"></iframe>
+
+		</div>
+	</div>
+</div>
+
+
+<!-- This is the mobile version - hidden on screens that are large or wider -->
+<div class="d-lg-none d-xl-none">
+	<!--Row for all site cols-->
+	<div class="row">
+	</div>
 	<!-- First col with banner, text, and blog posts-->
-	<div class="col-8">
+	<div class="col-12">
 
 		<!-- banner, mb-5 = margin level 5 -->
 		<div class="mb-5 float-left col">
@@ -48,14 +141,14 @@ UVM Stats and DS Club
 
 			<!--<p>Max: {{max}}</p>
 
-			{% for value in values %}
-			<p>{{value.id}}</p>
-			{% endfor %}-->
+            {% for value in values %}
+            <p>{{value.id}}</p>
+            {% endfor %}-->
 
 			<!-- Helpful for debugging how many blog posts appear on the front page:
-			{% for item in filter_list %}
-				<p>{{item}}</p>
-			{% endfor %}-->
+            {% for item in filter_list %}
+                <p>{{item}}</p>
+            {% endfor %}-->
 
 			{% for post in posts %}
 
@@ -67,7 +160,7 @@ UVM Stats and DS Club
 				<h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
 				<p>Post: {{ post.id }}</p>
 				<p>{{ post.created_date }} by {{ post.author.first_name }} {{ post.author.last_name }}</p>
-<!--					{{ post.content | safe }} </p>-->
+				<!--					{{ post.content | safe }} </p>-->
 				<!-- <p>{{ post.text | linebreaksbr }}</p> -->
 			</div>
 			{% endfor %}
@@ -75,11 +168,6 @@ UVM Stats and DS Club
 
 
 		</div>
-
-	</div>
-
-	<!-- Second col with listserv sign-up and calendar -->
-	<div class="col-4">
 
 		<!-- Email sign-up form and button -->
 		<div class="row mt-5">
@@ -94,9 +182,9 @@ UVM Stats and DS Club
 			<form method="GET" class="text-center mx-auto" action="{{contact}}">
 				<input class="btn btn-warning btn-round btn-block my-2 px-5 py-2" type="submit" value="Click Here!"/>
 			</form>
-<!--			<button " type="submit" onclick="window.location.href=contact.html" href="{{contact}}"></button>-->
-<!--			<form class="mx-auto" style="width: 40%;">-->
-<!--			</form>-->
+			<!--			<button " type="submit" onclick="window.location.href=contact.html" href="{{contact}}"></button>-->
+			<!--			<form class="mx-auto" style="width: 40%;">-->
+			<!--			</form>-->
 		</div>
 
 		<!-- Calendar -->
@@ -108,4 +196,5 @@ UVM Stats and DS Club
 
 	</div>
 </div>
+
 {% endblock %}
