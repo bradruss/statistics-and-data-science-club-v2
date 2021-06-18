@@ -1,6 +1,6 @@
 #+title: UVM Statistics and Data Science Club Website
 
-(Original README by Nicholas Hanoian)
+(Original README by Nicholas Hanoian, modified by Isaac Lee)
 
 This is a Django website which was created for use by the UVM Statistics and Data Science Club. It features a blog which can be managed through the Django administrator interface, as well as several static pages. It uses [[https://fullcalendar.io/][FullCalendar]] to embed the club's google calendar into the homepage (Google's default embedding is very ugly). 
 
@@ -24,6 +24,9 @@ The calendar requires the usage of the Google Calendar Developer API. The projec
 
 There is supposed to be a quota on how much this API key can be used, but this application should not reach that limit. If no events are showing up the calendar, there may be useful error messages in the browser's JavaScript console.
 
+
+** Mobile Responsiveness
+A number of pages have been modified since the last version to be responsive between mobile and desktop versions. In many cases, html files simply contain seperate versions of the same html code with changes that better suit desktops or mobile devices, which will be printed respective to the size of one's screen. This can be tested by pressing F12 in Google Chrome and switching to a mobile view.
 
 
 * Hosting the Site
@@ -66,6 +69,13 @@ python manage.py runserver
 *Important*: If you choose to do this manually, do not upload =db.sqlite3= or the =media= folder as this will overwrite the server's database and media.
 
 A =.htaccess= file is included in the project and should be uploaded along with the rest of the project. This is set up to work with Phusion Passenger on UVM's silk v2 server. It ensures that https protocol is used and specifies to Passenger how to start the application. It assumes that the Django project is located in =~/django-root=, and that it is being served from the =~/www-root= folder. If there are problems with the server starting the application, edit this file, and change =PassengerAppEnv production= to =PassengerAppEnv development=. This will give a traceback if the application cannot be started.
+
+In order to reload the website after uploading new files, use the following command in the directory for the website to kill the wsgi-loader:
+#+BEGIN_SRC sh
+pkill -u statclub -f wsgi-loader
+#+END_SRC
+
+Reloading the website in your browser will the execute .htaccess, which will then run your newly uploaded files.
 
 ** Making backups
 Backups of the database (db.sqlite3) as well as the media folder should be made periodically to minimize potential data loss.
