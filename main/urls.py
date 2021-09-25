@@ -14,6 +14,7 @@ urlpatterns = [
     url(r'^career_resources/$', views.career_resources, name='career_resources_url_name'),
     url(r'^contact/$', views.contact, name='contact_url_name'),
     url(r'^success/$', views.success, name='success_url_name'),
+    url(r'^photos/$', views.photos, name='photos_url_name'),
     #path('', views.post_list, name='blog_url_name'),
     path('post/<int:pk>', views.post_detail, name='post_detail')
 

@@ -36,6 +36,9 @@ def contact(request):
 def success(request):
     return render(request, 'main/success.html')
 
+def photos(request):
+    return render(request, 'main/photos.html')
+
 def handler404(request, *args, **kwargs):
     return render(request, 'main/404.html', status=404)
 
