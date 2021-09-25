@@ -14,6 +14,7 @@
 {% url 'main:career_resources_url_name' as career_resources %}
 {% url 'main:contact_url_name' as contact %}
 {% url 'main:success_url_name' as success %}
+{% url 'main:photos_url_name' as photos %}
 
 <!-- This page is the navbar that you see on every webpage -->
 
@@ -75,6 +76,10 @@
 						</li>
 
 						<li class="nav-item">
+							<a class="{% active request software %} nav-link" id="match-nav-bg" href="{{photos}}">Photos</a>
+						</li>A
+
+						<li class="nav-item">
 							<a class="{% active request asa %} nav-link" id="match-nav-bg" href="{{ asa }}">ASA Info</a>
 						</li>
 
@@ -129,6 +134,10 @@
 						</li>
 
 						<li class="nav-item">
+							<a class="{% active request software %} nav-link" id="match-nav-bg" href="{{photos}}">Photos</a>
+						</li>
+
+						<li class="nav-item">
 							<a class="{% active request asa %} nav-link" id="match-nav-bg" href="{{ asa }}">ASA Info</a>
 						</li>
 
@@ -147,7 +156,6 @@
 						<li class="nav-item">
 							<a class="{% active request software %} nav-link" id="match-nav-bg" href="{{contact}}">Contact</a>
 						</li>
-
 					</ul>
 				</nav>
 			</div>
