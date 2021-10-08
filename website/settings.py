@@ -129,16 +129,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, '../www-root/static/')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, '../www-root/media/')
 
-SUMMERNOTE_CONFIG = {
-    'iframe': False,
-    "jquery": "summernoteJQuery",
-
-    'summernote': {
-
-        'width': '100%'
-    }
-}
-
 SUMMERNOTE_THEME = 'bs3'
 
 LOGGING = {
@@ -199,6 +189,3 @@ EMAIL_HOST_PASSWORD = SECRET_APIKEY
 # Email options
 #EMAIL_USE_SSL = True
 EMAIL_USE_TLS = True
-
-# This might fix the blog
-X_FRAME_OPTIONS = "SAMEORIGIN"
