@@ -31,8 +31,8 @@
 		<link rel="stylesheet"
 			  href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/cosmo/bootstrap.min.css">
 
-		<link rel="shortcut icon" type="image/png" href="{% static 'main/images/square-black-small.png' %}"/>
-
+		<!-- <link rel="shortcut icon" type="image/png" href="{% static 'main/images/square-black-small.png' %}"/> -->
+		<link rel="shortcut icon" type="image/svg" href="{% static 'main/images/logo.svg' %}"/>
 
 		<!-- custom css -->
 		<link rel="stylesheet" type="text/css" href="{% static 'main/css/custom.css' %}">
@@ -48,22 +48,25 @@
 
 		{% block head %}{% endblock %}
 	</head>
-	<body style="background-color: #333333; color: #ffffff">
+	<body>
 
-		<header class="navbar fixed-top navbar-light" id="header" style="background-color: #8FAF80;">
+		<header class="navbar fixed-top navbar-light" id="header" style="background-color: #a7d233;">
 
 			<!-- NOTE FOR FUTURE DEVS: classes here refer to bootstrap classes -->
 
 			<!-- This is the tab-style desktop navbar - hidden on screens smaller than large -->
 			<div class="d-none d-lg-block">
-				<nav class="navbar navbar-expand-lg" style="background-color: #8FAF80;">
+				<nav class="navbar navbar-expand-lg" style="background-color: #a7d233; font-size: 1.3em;">
 
 					<ul class="navbar-nav navbar-collapse">
 
 						<li class="nav-item" >
 							<a class="navbar-brand d-flex flex-row align-items-center" id="header" href="{{ index }}">
-								<img class="d-flex pr-2" src="{% static 'main/images/square-medium.png' %}" width="50">
-								<div class="d-flex">UVM Stats and DS Club</div>
+								<!-- <img class="d-flex pr-2" src="{% static 'main/images/square-medium.png' %}" width="50"> -->
+
+								<!-- New logo -->
+								<img class="d-flex pr-2" src="{% static 'main/images/logo.svg' %}" width="200">
+								<!-- <div class="d-flex">UVM Stats and DS Club</div> -->
 							</a>
 						</li>
 
@@ -113,15 +116,16 @@
 				</button>
 
 				<!--  class="d-flex flex-column justify-content-center navbar-expand-lg navbar" -->
-				<nav id="navbarCollapse" class="collapse" style="background-color: #8FAF80;">
+				<nav id="navbarCollapse" class="collapse" style="background-color: #a7d233;">
 
 					<!--Removed navbar-collapse, which de-centers the text. Nice! -->
 					<ul class="navbar-nav">
 
 						<li class="nav-item">
 							<a class="navbar-brand d-flex flex-row align-items-center" id="header" href="{{ index }}">
-								<img class="d-flex pr-2" src="{% static 'main/images/square-medium.png' %}" width="50">
-								<div class="d-flex">UVM Stats and DS Club</div>
+								<!-- <img class="d-flex pr-2" src="{% static 'main/images/square-medium.png' %}" width="50"> -->
+								<img class="d-flex pr-2" src="{% static 'main/images/logo.svg' %}" width="150">
+								<!-- <div class="d-flex">UVM Stats and DS Club</div> -->
 							</a>
 						</li>
 

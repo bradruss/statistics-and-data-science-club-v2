@@ -5,7 +5,7 @@
 <!-- This is the desktop version - hidden on screens smaller than large -->
 <div class="d-none d-lg-block">
 	<!--Add margins to both sides-->
-	<div class="mx-5 py-4" style="background-color: #636363;">
+	<div class="mx-5 py-4" style="background-color: #f3f3f3;">
 		<div class="mx-5">
 
 			<!--Begin content-->
@@ -13,9 +13,9 @@
 			<div class="text-center" style="font-size:14px">
 				{{ post.created_date }} by {{ post.author.first_name }} {{ post.author.last_name }}
 			</div>
-			<div class="my-5 mx-auto text-center" style="font-size:20px; color: #FFFFFF">
+			<div class="my-5 mx-auto text-center" style="font-size:20px; color: #000000">
 				{{ post.content | safe }}
-				<a class="mt-5" style="font-size:18px; color:#202D7D" href="{% url 'blog_url_name' %}">Back</a>
+				<a class="mt-5" style="font-size:18px; color:#004c39" href="{% url 'blog_url_name' %}">Back</a>
 			</div>
 
 		</div>
@@ -31,9 +31,9 @@
 			<div class="text-center" style="font-size:14px">
 				{{ post.created_date }} by {{ post.author.first_name }} {{ post.author.last_name }}
 			</div>
-			<div class="my-5 text-center img-fluid" style="color: #FFFFFF">
+			<div class="my-5 text-center img-fluid" style="color: #000000">
 				{{ post.content | safe }}
-				<a class="mt-5" style="font-size:18px; color:#202D7D" href="{% url 'blog_url_name' %}">Back</a>
+				<a class="mt-5" style="font-size:18px; color:#004c39" href="{% url 'blog_url_name' %}">Back</a>
 			</div>
 		</div>
 	</div>

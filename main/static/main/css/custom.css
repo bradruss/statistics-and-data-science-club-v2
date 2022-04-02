@@ -1,6 +1,7 @@
 /* Header */
 h1 {
 		font-size: 2rem;
+		color: #004c39;
 }
 
 h2 {
@@ -31,7 +32,7 @@ h4, h5 {
 /* Nav bar */
 /* For some reason I could only get the BG color to change manually */
 #match-nav-bg {
-	background-color: #8FAF80;
+	background-color: #a7d233;
 }
 
 /* Nav bar button */
@@ -42,7 +43,15 @@ h4, h5 {
 
 /* body/main */
 body {
-	color: #ffffff;
+	color: #333333;
+}
+
+a {
+	color: #59934B;
+}
+
+a:hover {
+	color: #3a6030;
 }
 
 #main-content {

@@ -20,9 +20,14 @@ def index(request):
     # Fill filter list with certain values from descending from the max id
     # RESULT: filter_list = [max,max - 1,max - 2,max - 3,max-4,max-5,...]
     filter_list = []
-    for x in range(3):
-        filter_list.append(max)
-        max -= 1
+
+    # Try block to prevent crash during dev with no blog posts
+    try:
+        for x in range(3):
+            filter_list.append(max)
+            max -= 1
+    except TypeError:
+        pass
 
     # With all summernote blog posts ordered by the date created, filter in latest X posts
     posts = Post.objects.order_by('-created_date').filter(id__in=filter_list) # .filter(id__lte=6)
