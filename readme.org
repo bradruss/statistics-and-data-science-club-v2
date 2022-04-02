@@ -1,12 +1,16 @@
 #+title: UVM Statistics and Data Science Club Website
 
-(Original README by Nicholas Hanoian, modified by Isaac Lee)
+(Original README by Nicholas Hanoian, modified by Isaac Lee and Bradley Russavage)
 
 This is a Django website which was created for use by the UVM Statistics and Data Science Club. It features a blog which can be managed through the Django administrator interface, as well as several static pages. It uses [[https://fullcalendar.io/][FullCalendar]] to embed the club's google calendar into the homepage (Google's default embedding is very ugly). 
 
-The logo was created using R (see logo.r) as well as [[https://www.gimp.org/][GIMP]].
+The original logo was created using R (see logo.r) as well as [[https://www.gimp.org/][GIMP]].
 
 [[file:main/static/main/images/long-large.png]]
+
+The updated styling and logo are created by Bradley Russavage. Original design files can be obtained through Katherine Merrill or Bradley Russavage @ =brussavage@gmail.com=.
+
+[[file:main/static/main/images/logo.svg]]
 
 * Managing the Site
 Most of the site is simply static pages served through Django. These templates are, for the most part, simple html and can be found in the =main/templates/main/= directory. Static files should be stored in the =main/static/main/= folder. The dynamic aspects of the page are the blog and the calendar.
@@ -50,9 +54,12 @@ Then install the packages specified in =requirements.txt=
 pip install -r requirements.txt
 #+END_SRC
 
+It should be noted that if Django is updated by a future developer, urls are deprecated and should be replaced throughout the code with re_path.
 
 ** SECRET_KEY
 A file named =secret_key.txt= must be stored in the parent directory of where the site is stored. i.e. for deployment, assuming that the files are stored at =~/django-root/=, there must be a file at =~/secret_key.txt= with a secret key.
+
+Similarly, 3 other files are needed: =secret_email.txt= which is used for sending emails on the backend, =secret_emp.txt= which is used for the secret email password, and =secret_apikey.txt= which is the SendGrid email API key. As stated previously, all secret .txt files should be stored in the parent/root directory: NOT the directory containing the server files. The use of the keys depends on sending emails via the backend with the normal method or SendGrid. 
 
 ** Log folder
 There must be a folder located in the parent directory of where the site is stored called =django-logs=.
@@ -62,6 +69,19 @@ To start the development server, activate the virtual environment (see above), a
 #+BEGIN_SRC sh
 python manage.py runserver
 #+END_SRC
+
+** Development Testing
+If using code directly from this GitHub repo, you might have to create your own admin account.
+To do so, run 
+#+BEGIN_SRC sh
+python manage.py createsuperuser
+#+END_SRC
+
+If you want to create a posting page similar to the blog, run the command 
+#+BEGIN_SRC sh
+python manage.py startapp page_name_here
+#+END_SRC
+You'll also need to do additional linking to register the page in the admin control panel and website rendering.
 
 ** Deployment
 =deploy.sh= in the root of the project can be used to deploy the site. This uploads the relevant files to =~/django-root=, as well as the static files to =~/www-root/static=. If the static files change, you must manually run =python manage.py collectstatic=.
