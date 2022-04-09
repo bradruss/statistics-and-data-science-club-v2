@@ -25,7 +25,7 @@ with open(os.path.join(BASE_DIR, '../secret_key.txt')) as f:
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # TODO: Turn off once finished/deploying to server
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['statclub.w3.uvm.edu', '127.0.0.1']
 
@@ -35,6 +35,7 @@ ALLOWED_HOSTS = ['statclub.w3.uvm.edu', '127.0.0.1']
 INSTALLED_APPS = [
     'main',
     'blog',
+    'photos',
     'django_summernote',
     'django.contrib.admin',
     'django.contrib.auth',
