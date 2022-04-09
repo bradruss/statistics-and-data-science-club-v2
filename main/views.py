@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.core.mail import send_mail, BadHeaderError, EmailMessage
 from django.http import HttpResponse, HttpResponseRedirect
 from django.utils import timezone
+
+from photos.models import PhotoPost
 from .models import Post
 import os
 from sendgrid import SendGridAPIClient
@@ -14,6 +16,12 @@ def index(request):
     time = timezone.now()
     posts = Post.objects.order_by('-created_date')
     return render(request, 'blog/index.html', {'posts': posts, 'time': time})
+
+# Want this seperate since we are using different posts for photos
+def photo_index(request):
+    time = timezone.now()
+    posts = PhotoPost.objects.order_by('-created_date')
+    return render(request, 'photos/base.html', {'posts': posts, 'time': time})
 
 def people(request):
     return render(request, 'main/people.html')
@@ -37,7 +45,7 @@ def success(request):
     return render(request, 'main/success.html')
 
 def photos(request):
-    return render(request, 'main/photos.html')
+    return render(request, 'photos/templates/photos/post_detail.html')
 
 def handler404(request, *args, **kwargs):
     return render(request, 'main/404.html', status=404)

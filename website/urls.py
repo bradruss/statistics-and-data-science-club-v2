@@ -27,6 +27,7 @@ urlpatterns = [
     # URL Pattern for sending emails via form on contact.html
     # path('', include('sendemail.urls')),
     path('', include('blog.urls')),
+    path('photos/', include('photos.urls')),
     path('summernote/', include('django_summernote.urls')),
     path('main/', include('main.urls', 'blog.urls'))
 ]
