@@ -5,4 +5,4 @@ sendgrid-django==4.2.0
 pytz==2018.9
 sendgrid
 python-dotenv
-Pillow==9.1.0
+Pillow==7.2.0
