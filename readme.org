@@ -4,13 +4,12 @@
 
 This is a Django website which was created for use by the UVM Statistics and Data Science Club. It features a blog which can be managed through the Django administrator interface, as well as several static pages. It uses [[https://fullcalendar.io/][FullCalendar]] to embed the club's google calendar into the homepage (Google's default embedding is very ugly). 
 
-The original logo was created using R (see logo.r) as well as [[https://www.gimp.org/][GIMP]].
-
-[[file:main/static/main/images/long-large.png]]
-
-The updated styling and logo are created by Bradley Russavage. Original design files can be obtained through Katherine Merrill or Bradley Russavage @ =brussavage@gmail.com=.
+The original logo was created using R (see logo.r) but has been updated to:
 
 [[file:main/static/main/images/logo.svg]]
+
+Original design files can be obtained through Katherine Merrill or Bradley Russavage @ =brussavage@gmail.com=. Questions on how the website runs can also be sent to Bradley.
+
 
 * Managing the Site
 Most of the site is simply static pages served through Django. These templates are, for the most part, simple html and can be found in the =main/templates/main/= directory. Static files should be stored in the =main/static/main/= folder. The dynamic aspects of the page are the blog and the calendar.
@@ -54,7 +53,9 @@ Then install the packages specified in =requirements.txt=
 pip install -r requirements.txt
 #+END_SRC
 
-It should be noted that if Django is updated by a future developer, urls are deprecated and should be replaced throughout the code with re_path.
+** Installing other packages
+If you need to install other packages, just make sure to activate the virtual environment first. Installing packages without activating won't effect the site.
+If Django is ever updated by a future developer, =url= is deprecated and should be replaced throughout the code with =re_path=.
 
 ** SECRET_KEY
 A file named =secret_key.txt= must be stored in the parent directory of where the site is stored. i.e. for deployment, assuming that the files are stored at =~/django-root/=, there must be a file at =~/secret_key.txt= with a secret key.
@@ -71,17 +72,27 @@ python manage.py runserver
 #+END_SRC
 
 ** Development Testing
-If using code directly from this GitHub repo, you might have to create your own admin account.
+If using code directly from this GitHub repo, you might have to create your own admin account. Otherwise, you can use the admin account provided by Katherine.
 To do so, run 
 #+BEGIN_SRC sh
 python manage.py createsuperuser
 #+END_SRC
 
-If you want to create a posting page similar to the blog, run the command 
+If you want to create a posting page similar to the blog or the photo gallery, run the command 
 #+BEGIN_SRC sh
 python manage.py startapp page_name_here
 #+END_SRC
-You'll also need to do additional linking to register the page in the admin control panel and website rendering.
+You'll also need to do additional linking to register the page in the admin control panel and page rendering.
+
+If you update any of the models, make sure you run
+#+BEGIN_SRC sh
+python manage.py makemigrations
+python manage.py migrate
+#+END_SRC
+
+
+** Accessing the server files
+Since the website uses Silk, you can ssh or SFTP using =statclub@w3.uvm.edu=. The password can be obtained from Katherine.
 
 ** Deployment
 =deploy.sh= in the root of the project can be used to deploy the site. This uploads the relevant files to =~/django-root=, as well as the static files to =~/www-root/static=. If the static files change, you must manually run =python manage.py collectstatic=.
