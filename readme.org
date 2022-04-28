@@ -14,8 +14,10 @@ Original design files can be obtained through Katherine Merrill or Bradley Russa
 * Managing the Site
 Most of the site is simply static pages served through Django. These templates are, for the most part, simple html and can be found in the =main/templates/main/= directory. Static files should be stored in the =main/static/main/= folder. The dynamic aspects of the page are the blog and the calendar.
 
-** Blog
-The blog is a simple Django app which stores data in the site's database, and it can be modified by using the Django administrator interface. This can be accessed via https://statclub.w3.uvm.edu/admin.
+** Blog and Photos
+The blog and the photo gallery are simple Django apps which store data in the site's database, and it can be modified by using the Django administrator interface. This can be accessed via https://statclub.w3.uvm.edu/admin.
+
+It should be noted that if any new page is added to the control panel, permissions have to be dealt out under =Groups= or =Users=. =blog-manager= and =photo-manager= roles have been applied to the other club accounts so that they can post on the blog and photo gallery. 
 
 ** Calendar
 The calendar shows events from the statclub@uvm.edu google account's calendar. To modify the events, simply log into the google account and go to https://calendar.google.com. Here you can create and modify calendar events, and the page will be updated automatically.
